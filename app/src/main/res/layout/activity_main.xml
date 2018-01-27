@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ip520.connect3.MainActivity">
+
+    <ImageView
+        android:id="@+id/board"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/board" />
+
+    <ImageView
+        android:id="@+id/box1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="57dp"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/box2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignTop="@+id/hiddenBox1"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/box3"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/hiddenBox2"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/box4"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/hiddenBox5"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/box5"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignStart="@+id/hiddenBox2"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/box6"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/box7"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hiddenBox4"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/box8"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignStart="@+id/hiddenBox5"
+        android:layout_alignTop="@+id/hiddenBox7"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/box9"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/hiddenBox8"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/hiddenBox1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="57dp"
+        android:alpha="0"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/hiddenBox2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignTop="@+id/hiddenBox1"
+        android:layout_centerHorizontal="true"
+        android:alpha="0"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/hiddenBox3"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/hiddenBox2"
+        android:alpha="0"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/hiddenBox4"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/hiddenBox5"
+        android:alpha="0"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/hiddenBox5"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignStart="@+id/hiddenBox2"
+        android:layout_centerVertical="true"
+        android:alpha="0"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/hiddenBox6"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:alpha="0"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/hiddenBox7"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hiddenBox4"
+        android:layout_marginTop="20dp"
+        android:alpha="0"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/hiddenBox8"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignStart="@+id/hiddenBox5"
+        android:layout_alignTop="@+id/hiddenBox7"
+        android:alpha="0"
+        app:srcCompat="@drawable/red" />
+
+    <ImageView
+        android:id="@+id/hiddenBox9"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/hiddenBox8"
+        android:alpha="0"
+        app:srcCompat="@drawable/red" />
+
+    <TextView
+        android:id="@+id/redWin"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/box5"
+        android:layout_centerHorizontal="true"
+        android:text="RED WINS"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/yellowWin"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_above="@+id/box7"
+        android:layout_alignParentStart="true"
+        android:text="YELLOW WINS"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+</RelativeLayout>
