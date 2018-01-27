@@ -9,7 +9,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Boolean[] state = new Boolean[10];
+    /* It is a board which has configuration of the boxes, if it is null the
+     box is empty if it is true then it has a red orb if false a yellow orb */
     TextView redWins, yellowWins;
+    ImageView[] hiddenBox = new ImageView[10];
+    ImageView[] box = new ImageView[10];
 
     private boolean checkWin() {
         if (state[1] == state[2] && state[2] == state[3] && state[1] != null)
@@ -31,13 +35,12 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    boolean turnRed = true;
+    boolean turnRed = true;   // It tells whose turn it is, if it is true is red's turn else yellow's
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView[] box = new ImageView[10];
         redWins = (TextView) findViewById(R.id.redWin);
         yellowWins = (TextView) findViewById(R.id.yellowWin);
         redWins.setTranslationY(-2000f);
@@ -49,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             boxIds[i] = r.getIdentifier("box" + i, "id", name);
             box[i] = (ImageView) findViewById(boxIds[i]);
         }
-        ImageView[] hiddenBox = new ImageView[10];
         int[] hiddenBoxesIds = new int[10];
         for (int i = 1; i < 10; i++) {
             hiddenBoxesIds[i] = r.getIdentifier("hiddenBox" + i, "id", name);
@@ -79,9 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void gameComplete() {
         if (turnRed) {
-            redWins.setTranslationY(2000f);
+            redWins.animate().translationYBy(2000f).setDuration(1000);
         } else {
-            yellowWins.setTranslationY(-2000f);
+            yellowWins.animate().translationYBy(-2000).setDuration(1000);
         }
+        for (int i = 1; i < 10; i++)
+            hiddenBox[i].setClickable(false);
     }
 }
