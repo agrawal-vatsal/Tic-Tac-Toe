@@ -4,16 +4,40 @@ import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Boolean[] state = new Boolean[10];
     /* It is a board which has configuration of the boxes, if it is null the
      box is empty if it is true then it has a red orb if false a yellow orb */
-    TextView redWins, yellowWins;
-    ImageView[] hiddenBox = new ImageView[10];
     ImageView[] box = new ImageView[10];
+    GridLayout board;
+    ImageView boardImage;
+    LinearLayout winnerLabel;
+    TextView winnerLabelText;
+    Button playAgain;
+
+    private boolean checkDraw() {
+        for (int i = 1; i < 10; i++)
+            if (state[i] == null)
+                return false;
+        return true;
+    }
+
+    private void reset() {
+        winnerLabel.animate().alpha(0).setDuration(1000);
+        for (int i = 1; i < 10; i++) {
+            box[i].setClickable(true);
+            state[i] = null;
+            box[i].setImageResource(R.drawable.red);
+        }
+        boardImage.animate().alpha(1).setDuration(1000);
+        turnRed = true;
+    }
 
     private boolean checkWin() {
         if (state[1] == state[2] && state[2] == state[3] && state[1] != null)
@@ -41,10 +65,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        redWins = (TextView) findViewById(R.id.redWin);
-        yellowWins = (TextView) findViewById(R.id.yellowWin);
-        redWins.setTranslationY(-2000f);
-        yellowWins.setTranslationY(2000f);
+        winnerLabel = (LinearLayout) findViewById(R.id.winnerLabel);
+        winnerLabelText = (TextView) findViewById(R.id.winnerLabelText);
+        playAgain = (Button) findViewById(R.id.playAgain);
+        board = (GridLayout) findViewById(R.id.board);
+        boardImage = (ImageView) findViewById(R.id.boardImage);
         Resources r = getResources();
         String name = getPackageName();
         int[] boxIds = new int[10];
@@ -52,40 +77,47 @@ public class MainActivity extends AppCompatActivity {
             boxIds[i] = r.getIdentifier("box" + i, "id", name);
             box[i] = (ImageView) findViewById(boxIds[i]);
         }
-        int[] hiddenBoxesIds = new int[10];
-        for (int i = 1; i < 10; i++) {
-            hiddenBoxesIds[i] = r.getIdentifier("hiddenBox" + i, "id", name);
-            hiddenBox[i] = (ImageView) findViewById(hiddenBoxesIds[i]);
-        }
-        for (int i = 0; i < 9; i++) {
-            float position = -1 * (((i / 3) * 600) + 600);
-            box[i + 1].setTranslationY(position);
-        }
         for (int i = 0; i < 9; i++) {
             int I = i;
-            hiddenBox[i + 1].setOnClickListener((View view) -> {
-                float position = ((I / 3) * 600) + 600;
-                int transitionTime = ((I / 3) * 500) + 500;
-                if (!turnRed)
-                    box[I + 1].setImageResource(R.drawable.yellow);
-                box[I + 1].animate().translationYBy(position).setDuration(transitionTime);
+            box[i + 1].setOnClickListener((View view) -> {
+                imageClicked(I, box[I + 1]);
                 state[I + 1] = turnRed;
-                hiddenBox[I + 1].setClickable(false);
                 if (checkWin())
-                    gameComplete();
+                    gameComplete(false);
+                else if (checkDraw())
+                    gameComplete(true);
                 else turnRed = !turnRed;
             });
         }
-
+        playAgain.setOnClickListener((View view) -> reset());
     }
 
-    private void gameComplete() {
-        if (turnRed) {
-            redWins.animate().translationYBy(2000f).setDuration(1000);
+    private void imageClicked(int i, ImageView box) {
+        box.setAlpha(1f);
+        float position = -1 * (((i / 3) * 600) + 600);
+        box.setTranslationY(position);
+        if (!turnRed)
+            box.setImageResource(R.drawable.yellow);
+        box.animate().translationYBy(-1 * position).setDuration(1000);
+        box.setClickable(false);
+    }
+
+    private void gameComplete(boolean isDraw) {
+        if (isDraw) {
+            winnerLabelText.setText("DRAW");
+            winnerLabelText.setBackgroundColor(getResources().getColor(R.color.green));
+        } else if (turnRed) {
+            winnerLabelText.setText("RED WINS");
+            winnerLabel.setBackgroundColor(getResources().getColor(R.color.red));
         } else {
-            yellowWins.animate().translationYBy(-2000).setDuration(1000);
+            winnerLabelText.setText("YELLOW WINS");
+            winnerLabel.setBackgroundColor(getResources().getColor(R.color.yellow));
         }
-        for (int i = 1; i < 10; i++)
-            hiddenBox[i].setClickable(false);
+        for (int i = 1; i < 10; i++) {
+            box[i].setClickable(false);
+            box[i].animate().alpha(0f).setDuration(1000);
+        }
+        boardImage.animate().alpha(0f).setDuration(1000);
+        winnerLabel.animate().alpha(1).setDuration(1000);
     }
 }

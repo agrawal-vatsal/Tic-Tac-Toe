@@ -6,193 +6,141 @@
     android:layout_height="match_parent"
     tools:context="com.example.ip520.connect3.MainActivity">
 
-    <ImageView
+    <GridLayout
         android:id="@+id/board"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:layout_alignStart="@+id/boardImage"
+        android:layout_centerVertical="true"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/box1"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="15dp"
+            android:alpha="0"
+            app:srcCompat="@drawable/red" />
+
+        <ImageView
+            android:id="@+id/box2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_column="1"
+            android:layout_margin="15dp"
+            android:layout_row="0"
+            android:alpha="0"
+            app:srcCompat="@drawable/red" />
+
+        <ImageView
+            android:id="@+id/box3"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_column="2"
+            android:layout_margin="15dp"
+            android:layout_row="0"
+            android:alpha="0"
+            app:srcCompat="@drawable/red" />
+
+        <ImageView
+            android:id="@+id/box4"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_column="0"
+            android:layout_margin="15dp"
+            android:layout_row="1"
+            android:alpha="0"
+            app:srcCompat="@drawable/red" />
+
+        <ImageView
+            android:id="@+id/box5"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_column="1"
+            android:layout_margin="15dp"
+            android:layout_row="1"
+            android:alpha="0"
+            app:srcCompat="@drawable/red" />
+
+        <ImageView
+            android:id="@+id/box6"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_column="2"
+            android:layout_margin="15dp"
+            android:layout_row="1"
+            android:alpha="0"
+            app:srcCompat="@drawable/red" />
+
+        <ImageView
+            android:id="@+id/box7"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_column="0"
+            android:layout_margin="15dp"
+            android:layout_row="2"
+            android:alpha="0"
+            app:srcCompat="@drawable/red" />
+
+        <ImageView
+            android:id="@+id/box8"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_column="1"
+            android:layout_margin="15dp"
+            android:layout_row="2"
+            android:alpha="0"
+            app:srcCompat="@drawable/red" />
+
+        <ImageView
+            android:id="@+id/box9"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_column="2"
+            android:layout_margin="15dp"
+            android:layout_row="2"
+            android:alpha="0"
+            app:srcCompat="@drawable/red" />
+
+
+    </GridLayout>
+
+    <ImageView
+        android:id="@+id/boardImage"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:layout_alignTop="@+id/board"
+        android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/board" />
 
-    <ImageView
-        android:id="@+id/box1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="57dp"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/box2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignTop="@+id/hiddenBox1"
+    <LinearLayout
+        android:id="@+id/winnerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/box3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/hiddenBox2"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/box4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/hiddenBox5"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/box5"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignStart="@+id/hiddenBox2"
+        android:layout_centerInParent="true"
+        android:padding="20dp"
         android:layout_centerVertical="true"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/box6"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/box7"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/hiddenBox4"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/box8"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignStart="@+id/hiddenBox5"
-        android:layout_alignTop="@+id/hiddenBox7"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/box9"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/hiddenBox8"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/hiddenBox1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="57dp"
+        android:layout_alignTop="@+id/boardImage"
+        android:background="@color/colorPrimaryDark"
         android:alpha="0"
-        app:srcCompat="@drawable/red" />
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/hiddenBox2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignTop="@+id/hiddenBox1"
-        android:layout_centerHorizontal="true"
-        android:alpha="0"
-        app:srcCompat="@drawable/red" />
+        <TextView
+            android:id="@+id/winnerLabelText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:text="TextView" />
 
-    <ImageView
-        android:id="@+id/hiddenBox3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/hiddenBox2"
-        android:alpha="0"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/hiddenBox4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/hiddenBox5"
-        android:alpha="0"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/hiddenBox5"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignStart="@+id/hiddenBox2"
-        android:layout_centerVertical="true"
-        android:alpha="0"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/hiddenBox6"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:alpha="0"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/hiddenBox7"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/hiddenBox4"
-        android:layout_marginTop="20dp"
-        android:alpha="0"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/hiddenBox8"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignStart="@+id/hiddenBox5"
-        android:layout_alignTop="@+id/hiddenBox7"
-        android:alpha="0"
-        app:srcCompat="@drawable/red" />
-
-    <ImageView
-        android:id="@+id/hiddenBox9"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/hiddenBox8"
-        android:alpha="0"
-        app:srcCompat="@drawable/red" />
-
-    <TextView
-        android:id="@+id/redWin"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignTop="@+id/box5"
-        android:layout_centerHorizontal="true"
-        android:text="RED WINS"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="60sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/yellowWin"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_above="@+id/box7"
-        android:layout_alignParentStart="true"
-        android:text="YELLOW WINS"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:textSize="60sp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/playAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play Again" />
+    </LinearLayout>
 </RelativeLayout>
