@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     /* It is a board which has configuration of the boxes, if it is null the
      box is empty if it is true then it has a red orb if false a yellow orb */
     ImageView[] box = new ImageView[10];
+    final long duration = 500;
     GridLayout board;
     ImageView boardImage;
     LinearLayout winnerLabel;
@@ -29,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void reset() {
-        winnerLabel.animate().alpha(0).setDuration(1000);
+        winnerLabel.animate().alpha(0).setDuration(duration);
         for (int i = 1; i < 10; i++) {
             box[i].setClickable(true);
             state[i] = null;
             box[i].setImageResource(R.drawable.red);
         }
-        boardImage.animate().alpha(1).setDuration(1000);
+        boardImage.animate().alpha(1).setDuration(duration);
         turnRed = true;
     }
 
@@ -98,14 +99,14 @@ public class MainActivity extends AppCompatActivity {
         box.setTranslationY(position);
         if (!turnRed)
             box.setImageResource(R.drawable.yellow);
-        box.animate().translationYBy(-1 * position).setDuration(1000);
+        box.animate().translationYBy(-1 * position).setDuration(duration);
         box.setClickable(false);
     }
 
     private void gameComplete(boolean isDraw) {
         if (isDraw) {
             winnerLabelText.setText("DRAW");
-            winnerLabelText.setBackgroundColor(getResources().getColor(R.color.green));
+            winnerLabel.setBackgroundColor(getResources().getColor(R.color.green));
         } else if (turnRed) {
             winnerLabelText.setText("RED WINS");
             winnerLabel.setBackgroundColor(getResources().getColor(R.color.red));
@@ -115,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
         }
         for (int i = 1; i < 10; i++) {
             box[i].setClickable(false);
-            box[i].animate().alpha(0f).setDuration(1000);
+            box[i].animate().alpha(0f).setDuration(duration);
         }
-        boardImage.animate().alpha(0f).setDuration(1000);
-        winnerLabel.animate().alpha(1).setDuration(1000);
+        boardImage.animate().alpha(0f).setDuration(duration);
+        winnerLabel.animate().alpha(1).setDuration(duration);
     }
 }
