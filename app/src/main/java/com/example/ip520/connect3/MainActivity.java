@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Boolean[] state = new Boolean[10];
-    /* It is a board which has configuration of the boxes, if it is null the
-     box is empty if it is true then it has a red orb if false a yellow orb */
     ImageView[] box = new ImageView[10];
     final long duration = 500;
     GridLayout board;
@@ -38,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         }
         boardImage.animate().alpha(1).setDuration(duration);
         turnRed = true;
+        playAgain.setClickable(false);
     }
 
     private boolean checkWin() {
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    boolean turnRed = true;   // It tells whose turn it is, if it is true is red's turn else yellow's
+    boolean turnRed = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
         playAgain.setOnClickListener((View view) -> reset());
+        playAgain.setClickable(false);
     }
 
     private void imageClicked(int i, ImageView box) {
@@ -120,5 +120,6 @@ public class MainActivity extends AppCompatActivity {
         }
         boardImage.animate().alpha(0f).setDuration(duration);
         winnerLabel.animate().alpha(1).setDuration(duration);
+        playAgain.setClickable(true);
     }
 }
